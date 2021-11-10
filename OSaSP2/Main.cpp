@@ -3,9 +3,9 @@
 #endif 
 
 #include <windows.h>
-
+#include "Table.h"
 LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
-
+Table table("C:\\Users\\Acer\\Desktop\\data.txt");
 int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PWSTR pCmdLine, int nCmdShow)
 {
 	// Register the window class.
@@ -54,10 +54,9 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PWSTR pCmdLine
 
 	return 0;
 }
-void DrawTable(HWND hwnd) {
+void DrawTable(HWND hwnd, Table table) {
 	PAINTSTRUCT ps;
 	HDC hdc = BeginPaint(hwnd, &ps);
-
 	FillRect(hdc, &ps.rcPaint, (HBRUSH)(COLOR_WINDOW + 1));
 
 	EndPaint(hwnd, &ps);
@@ -70,8 +69,13 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 		PostQuitMessage(0);
 		break;
 	case WM_PAINT:
-		DrawTable(hwnd);
+		DrawTable(hwnd, table);
 		break;
+	case WM_SIZE:
+	{
+		InvalidateRect(hwnd, nullptr, TRUE);
+	}
+	break;
 	default:
 		return DefWindowProc(hwnd, uMsg, wParam, lParam);
 	}

@@ -6,11 +6,10 @@ using namespace std;
 class Table {
 private:
 	vector<vector<string>> data;
-	int rowsCount;
-	int colCount;
+	int rowCount;
+	int columnCount;
 public:
-	Table();
-	~Table();
-	void Draw(HDC hdc, RECT windowRect);
+	Table(string path);
+	void Draw(HDC hdc, RECT clientRect);
 	void ReadDataFromFile(string path);
 };
