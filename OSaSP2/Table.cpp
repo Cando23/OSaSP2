@@ -44,7 +44,7 @@ void Table::Draw(HDC hdc, RECT clientRect) {
 			int cellHeight = DrawTextA(hdc, value, -1, &cell, DT_WORDBREAK | DT_CENTER);
 			if (cellHeight > maxHeight) maxHeight = cellHeight;
 		}
-		tableHeight += maxHeight + 2*tmHeight;
+		tableHeight += maxHeight + 2 * tmHeight;
 		DrawRow(hdc, clientRect.right, tableHeight);
 	}
 	for (int j = 0; j < this->data[0].size(); j++) {

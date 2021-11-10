@@ -58,7 +58,10 @@ void DrawTable(HWND hwnd, Table table) {
 	PAINTSTRUCT ps;
 	HDC hdc = BeginPaint(hwnd, &ps);
 	FillRect(hdc, &ps.rcPaint, (HBRUSH)(COLOR_WINDOW + 1));
-
+	SelectObject(hdc, CreatePen(PS_SOLID, 3, RGB(255, 0, 0)));
+	RECT clientRect;
+	GetClientRect(hwnd, &clientRect);
+	table.Draw(hdc, clientRect);
 	EndPaint(hwnd, &ps);
 }
 LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
