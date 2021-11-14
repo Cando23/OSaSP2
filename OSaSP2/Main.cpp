@@ -5,7 +5,7 @@
 #include <windows.h>
 #include "Table.h"
 LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
-Table table("C:\\Users\\Acer\\Desktop\\data.txt");
+Table table("data.txt");
 int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PWSTR pCmdLine, int nCmdShow)
 {
 	// Register the window class.
